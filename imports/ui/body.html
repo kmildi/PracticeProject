@@ -1,0 +1,27 @@
+<body>
+    <div class="container">
+      <header>
+      <h1>Todo List ({{incompleteCount}})</h1>
+
+      <label class="hide-completed">
+      <input type="checkbox" />
+          Hide Completed Tasks
+      </label>
+
+      {{> loginButtons}} <!-- Az accounts-ui package-ből:  https://docs.meteor.com/packages/accounts-ui.html -->
+
+      {{#if currentUser}}   <!-- Az accounts-base package-ből: https://docs.meteor.com/api/accounts.html#currentUser -->
+        <form class="new-task">
+            <input type="text" name="text" placeholder="Type to add new tasks" />
+        </form>
+      {{/if}}
+
+      </header>
+  
+      <ul>
+        {{#each tasks}} <!-- Itt adjuk meg a kontextust, vagyis az adatokat, saját helper a js-ben -->
+          {{> task}} <!-- saját template a task.html-ben, a fenti helperből kapott adatokkal jelenítjük meg -->
+        {{/each}}
+      </ul>
+    </div>
+  </body>
